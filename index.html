@@ -34,18 +34,24 @@
 	    lat: -12.043333,
 	    lng: -77.028333,
 	    click: function(e) {
-			
+			// tum makerlari siler
 		    for (var i = 0; i < markers.length; i++) {
 		      markers[i].setMap(null);
 		    }
 			
+			// o anki koordinatlar
+			var lat = e.latLng.lat();
+			var lng = e.latLng.lng();
+			
+			// yeni maker ekler
 		    m = map.addMarker({
-		           lat: -12.042,
-		           lng: -77.028333,
-		           title: 'Marker with InfoWindow',
+		           lat: lat,
+		           lng: lng,
+		           title: 'Kurumsal adresinizin haritadaki yeri',
 		           infoWindow: {
-		             content: '<p>HTML Content</p>'
+		             content: '<p>Adres</p>'
 		           },
+				   // maker i siler
 				   dblclick: function(e) {
 				       this.setMap(null);
 				     }
@@ -53,10 +59,11 @@
 			markers.push(m);
 	    },
 	    dragend: function(e) {
-	      alert('dragend');
+	      //alert('dragend');
 	    }
 	  });
 	  
+	  // arama icin
       $('#geocoding_form').submit(function(e){
         e.preventDefault();
         GMaps.geocode({
