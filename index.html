@@ -17,6 +17,10 @@
 	            <input type="submit" class="btn" value="Search">
 	          </div>
 	        </form>
+			<form method="post" id="geocoding_form_hidden">
+				<input type="text" name="lat" id="lat" />
+				<input type="text" name="lng" id="lng" />
+			</form>
   <div id="map"></div>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -43,13 +47,17 @@
 			var lat = e.latLng.lat();
 			var lng = e.latLng.lng();
 			
+			// Forma gonder
+			$('#lat').val(lat);
+			$('#lng').val(lng);
+			
 			// yeni maker ekler
 		    m = map.addMarker({
 		           lat: lat,
 		           lng: lng,
 		           title: 'Kurumsal adresinizin haritadaki yeri',
 		           infoWindow: {
-		             content: '<p>Adres</p>'
+		             content: '<span>Kurumsal adresinizin haritadaki yeri burası mı görünsün?</span>'
 		           },
 				   // maker i siler
 				   dblclick: function(e) {
